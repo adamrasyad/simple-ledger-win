@@ -41,11 +41,14 @@ namespace CSV_Accounting
             comboBox1.SelectedItem = "Bahasa Indonesia";
 
             // table header generate
+            dataGridView1.Columns.Add("Tanggal", "Tanggal");
             dataGridView1.Columns.Add("Masukan", "Masukan");
             dataGridView1.Columns.Add("Keluaran", "Keluaran");
             dataGridView1.Columns.Add("Total", "Total");
             dataGridView1.Columns.Add("Timbangan", "Timbangan");
+            
             //dataGridView1.Columns.Add("Waktu", "Waktu");
+            dataGridView1.Columns["Tanggal"].ReadOnly = false;
             dataGridView1.Columns["Masukan"].ReadOnly = false; 
             dataGridView1.Columns["Keluaran"].ReadOnly = false;
             dataGridView1.Columns["Total"].ReadOnly = true;
@@ -71,9 +74,11 @@ namespace CSV_Accounting
         private void button2_Click(object sender, EventArgs e)
         {
             //state 3 : OPEN AND EDIT
-            OpenFileDialog chooseFileDialog = new OpenFileDialog();
-            chooseFileDialog.Filter = "CSV Files (*.csv)|*.csv";
-            chooseFileDialog.FilterIndex = 1;
+            OpenFileDialog chooseFileDialog = new OpenFileDialog
+            {
+                Filter = "CSV Files (*.csv)|*.csv",
+                FilterIndex = 1
+            };
             if (chooseFileDialog.ShowDialog() == DialogResult.OK) //ketika dialog muncul
             {
                 dataGridView1.Rows.Clear();
@@ -124,19 +129,20 @@ namespace CSV_Accounting
                             i++;
                         }
                         */
-                        if ((values != "Masukan" && values != "Keluaran" && values != "Total" && values != "Timbangan") &&
+                        if ((values != "Tanggal" && values != "Masukan" && values != "Keluaran" && values != "Total" && values != "Timbangan") &&
                             (values != "Debit" && values != "Kredit" && values != "Total" && values != "Saldo") &&
-                            (values != "Inflow" && values != "Outflow" && values != "Total" && values != "Balance") &&
+                            (values != "Date" && values != "Inflow" && values != "Outflow" && values != "Total" && values != "Balance") &&
                             (values != "Debit" && values != "Credit" && values != "Total" && values != "Balance") &&
                             (values != "Debit" && values != "Kredit" && values != "Total" && values != "Saldo") &&
-                            (values != "الداخل" && values != "الخارج" && values != "المجموع" && values != "الرصيد") &&
+                            (values != "التاريخ" && values != "الداخل" && values != "الخارج" && values != "المجموع" && values != "الرصيد") &&
                             (values != "الخصم" && values != "الائتمان" && values != "المجموع" && values != "الرصيد")
                             &&
                             j != stringArray.Length - dataGridView1.Columns.Count - 1)
-                        {
+                        { //jika bukan headtext
                             if ((j % dataGridView1.Columns.Count) == 0 || j == 0) //new row
                             {
-                                dataGridView1.Rows.Add("0", "0", "0", "0");
+                                dataGridView1.Rows.Add("0", "0", "0", "0", "0");
+                                dataGridView1.Columns["Tanggal"].ReadOnly = false;
                                 dataGridView1.Columns["Masukan"].ReadOnly = false;
                                 dataGridView1.Columns["Keluaran"].ReadOnly = false;
                                 i++;
@@ -163,7 +169,7 @@ namespace CSV_Accounting
                 }
                 isOpeningFile = true;
                 label6.Visible = true;
-                label6.Text = label6.Text + theFileNameWithoutPath;
+                label6.Text += theFileNameWithoutPath;
                 panel1.Visible = true;
                 dataGridView1.Visible = true;
                 button6.Visible = true;
@@ -173,12 +179,16 @@ namespace CSV_Accounting
                 label4.Text = dateTime + theCurrentTime;
                 Array.Resize(ref total, dataGridView1.RowCount);
                 Array.Resize(ref balance, dataGridView1.RowCount);
-                foreach(DataGridViewRow dGRow in dataGridView1.Rows)
+                foreach (DataGridViewRow dGRow in dataGridView1.Rows)
                 {
-                    total[dGRow.Index] = decimal.Parse(dGRow.Cells["Keluaran"].Value.ToString());
-                    total[dGRow.Index] += decimal.Parse(dGRow.Cells["Masukan"].Value.ToString());
+                    if(dGRow.Cells["Keluaran"].Value != null)
+                        if (decimal.TryParse(dGRow.Cells["Keluaran"].Value.ToString(), out _))
+                            total[dGRow.Index] = decimal.Parse(dGRow.Cells["Keluaran"].Value.ToString());
+                    if(dGRow.Cells["Masukan"].Value != null)
+                        if(decimal.TryParse(dGRow.Cells["Masukan"].Value.ToString(), out _))
+                            total[dGRow.Index] += decimal.Parse(dGRow.Cells["Masukan"].Value.ToString());
                     for(int i=0; i < 2; i++)
-                    preventError(dataGridView1, new DataGridViewCellEventArgs(i, dGRow.Index));
+                        preventError(dataGridView1, new DataGridViewCellEventArgs(i, dGRow.Index));
                     totalCellCount(dataGridView1, new DataGridViewCellEventArgs(dGRow.Cells["Total"].ColumnIndex, dGRow.Index));
                     balanceCellCount(dataGridView1, new DataGridViewCellEventArgs(dGRow.Cells["Total"].ColumnIndex, dGRow.Index));
                 }
@@ -200,7 +210,8 @@ namespace CSV_Accounting
         private void button5_Click(object sender, EventArgs e)
         {
             //state 5 : FILL
-            dataGridView1.Rows.Add("0", "0", "0", "0");
+            dataGridView1.Rows.Add("0", "0", "0", "0", "0");
+            dataGridView1.Columns["Tanggal"].ReadOnly = false;
             dataGridView1.Columns["Masukan"].ReadOnly = false;
             dataGridView1.Columns["Keluaran"].ReadOnly = false;
             rowsAmount += 1;
@@ -209,10 +220,12 @@ namespace CSV_Accounting
         private void button6_Click(object sender, EventArgs e)
         {
             //state 2 : ADD : SAVEnhnhgjg
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "CSV File|*.csv";
-            saveFileDialog.FileName = "Accounting " + DateTime.Now.ToString("ddMMyyyyHHmmss");
-            saveFileDialog.Title = "Save CSV File";
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                Filter = "CSV File|*.csv",
+                FileName = "Accounting " + DateTime.Now.ToString("ddMMyyyyHHmmss"),
+                Title = "Save CSV File"
+            };
             if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 string theSavePath = saveFileDialog.FileName;
@@ -259,7 +272,7 @@ namespace CSV_Accounting
             int j = 0;
             rowsCountBeforeCleared = dataGridView1.Rows.Count;
             columnsCountBeforeCleared = dataGridView1.Columns.Count;
-            foreach (DataGridViewRow dataGRow in dataGridView1.Rows)
+            /*foreach (DataGridViewRow dataGRow in dataGridView1.Rows)
             {
                 for (int i = 0; i < dataGridView1.Columns.Count; i++)
                 {
@@ -268,7 +281,7 @@ namespace CSV_Accounting
                     beforeClearedDGVCellValues.Enqueue(dataGridView1.Rows[j].Cells[i].Value.ToString());
                 }
                 j++;
-            }
+            }*/
 
             isJustCleared = true;
             dataGridView1.Rows.Clear();
@@ -356,7 +369,7 @@ namespace CSV_Accounting
                 if(decimal.TryParse(dataGridView1.Rows[e.RowIndex].Cells["Masukan"].Value.ToString(), out _))
                     total[e.RowIndex] += decimal.Parse(dataGridView1.Rows[e.RowIndex].Cells["Masukan"].Value.ToString());
             }
-            else
+            else if (dataGridView1.Columns[e.ColumnIndex].Index != dataGridView1.Columns["Tanggal"].Index)
             {
                 label1.Visible = true;
             }
@@ -402,35 +415,70 @@ namespace CSV_Accounting
         {
             panel2.Visible = false;
         }
+        Stack<DataGridViewRow> undoStack = new Stack<DataGridViewRow>();
+        Stack<DataGridViewRow> redoStack = new Stack<DataGridViewRow>();
+        public DataGridViewRow CloneWithValues(DataGridViewRow row)
+        {
+            DataGridViewRow clonedRow = (DataGridViewRow)row.Clone();
+            for (Int32 index = 0; index < row.Cells.Count; index++)
+            {
+                clonedRow.Cells[index].Value = row.Cells[index].Value;
+            }
+            return clonedRow;
+        }
+        private void button10_Click(object sender, EventArgs e)
+        {
+            if (undoStack.Count > 0)
+                undoStack.Pop();
+            if (undoStack.Count > 0)
+                undoStack.Pop();
+            DataGridViewRow[] a = new DataGridViewRow[undoStack.Count];
+            undoStack.CopyTo(a, 0);
+            if (undoStack.Count > 0)
+            {
+                DataGridViewRow originalRow = undoStack.Pop();
+                if (originalRow.Index >= 0)
+                {
+                    int orRowIndex = originalRow.Index;
+                    DataGridViewRow newRow = new DataGridViewRow();
+                    newRow = CloneWithValues(originalRow);
+                    redoStack.Push(dataGridView1.Rows[originalRow.Index]);
+                    if (originalRow.IsNewRow)
+                    {
+                        dataGridView1.Rows.RemoveAt(dataGridView1.Rows.Count - 2);
+                    }
+                    else
+                    {
+                        dataGridView1.Rows.RemoveAt(orRowIndex);
+                    }
+                    dataGridView1.Rows.Insert(orRowIndex, newRow);
+                }
+            }
+        }
 
+        private void button11_Click(object sender, EventArgs e)
+        {
+            if (redoStack.Count > 0)
+            {
+                DataGridViewRow originalRow = redoStack.Pop();
+                if (originalRow.Index >= 0)
+                {
+                    undoStack.Push(dataGridView1.Rows[originalRow.Index]);
+                    dataGridView1.Rows.Insert(originalRow.Index, originalRow);
+                }
+            }
+
+        }
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             //dataGridView1_CellClick(sender, e);
             askToSave = true;
-
-            isJustCleared = false; //welp, this event mean its filled not just cleared thus empty
-
-            if (e.RowIndex >= 0 && e.ColumnIndex != dataGridView1.Columns["Total"].Index && e.ColumnIndex != dataGridView1.Columns["Timbangan"].Index)
+                isJustCleared = false; //welp, this event mean its filled not just cleared thus empty
+            if (e.RowIndex >= 0 && dataGridView1.Columns[e.ColumnIndex].Name != "Total" && dataGridView1.Columns[e.ColumnIndex].Name != "Timbangan")
             {
-                preventError(sender, e);
-                totalCellCount(sender, e);
-                balanceCellCount(sender, e);
-
-                // for undo-redo feature
-                sequencesOfEditedColumnIndexes.Push(e.ColumnIndex);
-                sequencesOfEditedRowIndexes.Push(e.RowIndex);
-                sequencesOfPreviousCellValue.Push(dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString());
-                
-                //Console.WriteLine("ADDED!!! row[" + sequencesOfEditedRowIndexes.Peek() + "]" + " Cell[" + sequencesOfEditedColumnIndexes.Peek() + "]"
-                //    + " with value " + sequencesOfPreviousCellValue.Peek());
+                undoStack.Push(dataGridView1.Rows[e.RowIndex]);
+                redoStack.Clear();
             }
-            /*if (sequencesOfPreviousCellValue.Count > 0)
-            {
-                decimal[] array = { };
-                array = new decimal[sequencesOfPreviousCellValue.Count];
-                decimal.Parse(sequencesOfPreviousCellValue.Peek());
-                Console.WriteLine("[{0}]", string.Join(", ", array));
-            }*/
             //Console.WriteLine("Row just added ? " + isRowJustAdded);
             string theCurrentTime = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
             if (e.RowIndex > -1)
@@ -710,181 +758,48 @@ namespace CSV_Accounting
                 }
             }
         }
-        private void button10_Click(object sender, EventArgs e)
-        {
-            //UNDO
-            /*
-            if (sequencesOfPreviousCellValue.Count() != 0
-                && sequencesOfEditedRowIndexes.Count() != 0
-                && sequencesOfEditedColumnIndexes.Count() != 0)
-            {
-                string[] array = { };
-                Array.Resize(ref array, sequencesOfPreviousCellValue.Count());
-                array[sequencesOfPreviousCellValue.Count()-1] = sequencesOfPreviousCellValue.Peek();
-                Console.WriteLine("UNDO values STACK --> [{0}]", string.Join(", ", array));
-            }*/
-            // Debug with Console
-            //Console.WriteLine("Row[" + sequencesOfEditedRowIndexes.Peek() + "]" + " Cell[" + sequencesOfEditedColumnIndexes.Peek()  + "]"
-            //    + " with value " + sequencesOfPreviousCellValue.Peek());
-            if (isJustCleared)
-            {
-                for (int j = 0; j < rowsCountBeforeCleared; j++)
-                {
-                    if (j != rowsCountBeforeCleared - 1)
-                    {
-                        dataGridView1.Rows.Add("0", "0", "0", "0");
-                        dataGridView1.Columns["Masukan"].ReadOnly = false;
-                        dataGridView1.Columns["Keluaran"].ReadOnly = false;
-                    }
-                    for (int i = 0; i < columnsCountBeforeCleared; i++)
-                    {
-                        dataGridView1.Rows[j].Cells[i].Value = beforeClearedDGVCellValues.Dequeue();
-                    }
-                }
-            }
-            else
-            {
-                lastEditedCellValue.Push(
-                dataGridView1.Rows[sequencesOfEditedRowIndexes.Peek()].Cells[sequencesOfEditedColumnIndexes.Peek()].Value.ToString());
-                lastEditedColumnIndex.Push(sequencesOfEditedColumnIndexes.Pop());
-                lastEditedRowIndex.Push(sequencesOfEditedRowIndexes.Pop());
-                Console.WriteLine(dataGridView1.CancelEdit());
-            }
-            
-            /*
-            else if (sequencesOfPreviousCellValue.Count() != 0
-                && sequencesOfEditedRowIndexes.Count() != 0
-                && sequencesOfEditedColumnIndexes.Count() != 0)
-            {
-                //removing same thing or recently on top, because the top is assigend with value changed recently
-                //if (sequencesOfPreviousCellValue.Count() == 1 && sequencesOfEditedRowIndexes.Count() == 1 && sequencesOfEditedColumnIndexes.Count() == 1)
 
-                // Debug with Console
-                /*Console.WriteLine("Row[" + sequencesOfEditedRowIndexes.Peek() + "]" + " Cell[" + sequencesOfEditedColumnIndexes.Peek()  + "]"
-                    + " with value " + sequencesOfPreviousCellValue.Peek());
-                *//*
-                if   (sequencesOfPreviousCellValue.Count() > 1
-                && sequencesOfEditedRowIndexes.Count() > 1
-                && sequencesOfEditedColumnIndexes.Count() > 1)
-                {
-                        sequencesOfPreviousCellValue.Pop();
-                    sequencesOfEditedRowIndexes.Pop();
-                    sequencesOfEditedColumnIndexes.Pop();
-                }*/
-                /*
-                if (sequencesOfPreviousCellValue.Count() != 0
-                    && sequencesOfEditedRowIndexes.Count() != 0
-                    && sequencesOfEditedColumnIndexes.Count() != 0)
-                {
-                    Console.WriteLine("Row[" + sequencesOfEditedRowIndexes.Peek() + "]" + " Cell[" + sequencesOfEditedColumnIndexes.Peek() + "]"
-                    + " with value " + sequencesOfPreviousCellValue.Peek());
-                    sequencesOfPreviousCellValue.Pop();
-                    sequencesOfEditedRowIndexes.Pop();
-                    sequencesOfEditedColumnIndexes.Pop();
-                }*/
-                /*if (sequencesOfPreviousCellValue.Count() != 0
-                    && sequencesOfEditedRowIndexes.Count() != 0
-                    && sequencesOfEditedColumnIndexes.Count() != 0)
-                {
-                    //Console.WriteLine("Row[" + sequencesOfEditedRowIndexes.Peek() + "]" + " Cell[" + sequencesOfEditedColumnIndexes.Peek() + "]"
-                    //+ " with value " + sequencesOfPreviousCellValue.Peek());
-                    //for redo feature
-                    lastEditedRowIndex.Push(sequencesOfEditedRowIndexes.Peek());
-                    lastEditedColumnIndex.Push(sequencesOfEditedColumnIndexes.Peek());
-                    lastEditedCellValue
-                        .Push(dataGridView1.Rows[sequencesOfEditedRowIndexes.Peek()].Cells[sequencesOfEditedColumnIndexes.Peek()].Value.ToString());
-
-                    //for recounting total
-                    int undoneColumnIndex = sequencesOfEditedColumnIndexes.Peek();
-                    int undoneRowIndex = sequencesOfEditedRowIndexes.Peek();
-
-                    //undoing
-                    dataGridView1
-                        .Rows[sequencesOfEditedRowIndexes.Pop()]
-                        .Cells[sequencesOfEditedColumnIndexes.Pop()]
-                        .Value = sequencesOfPreviousCellValue.Pop();
-
-                    // Debug with Console
-                    //Console.WriteLine("Undo result : " + dataGridView1.Rows[undoneRowIndex].Cells[undoneColumnIndex].Value);
-
-                    //recounting total
-                    dataGridView1_CellEndEdit(
-                        this.dataGridView1,
-                        new DataGridViewCellEventArgs(undoneColumnIndex, undoneRowIndex)
-                        );
-                }
-            }*/
-            //else
-            //    Console.WriteLine("stack is empty!!!");
-            
+       
+      //Stack<int> sequencesOfEditedRowIndexes = new Stack<int>();
+      //Stack<int> sequencesOfEditedColumnIndexes = new Stack<int>();
+      //Stack<string> sequencesOfPreviousCellValue = new Stack<string>();
+      private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+      {
+          /*
+          //if (e.RowIndex != null && e.ColumnIndex != null)
+          //{
+              sequencesOfEditedColumnIndexes.Push(e.ColumnIndex);
+              sequencesOfEditedRowIndexes.Push(e.RowIndex);
+              sequencesOfPreviousCellValue.Push(dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString());
+          //}
+          */
         }
-
-        private void button11_Click(object sender, EventArgs e)
+        private void dtp_CloseUp(object sender, EventArgs e)
         {
-            if (lastEditedCellValue.Count() != 0 && lastEditedRowIndex.Count() != 0 && lastEditedColumnIndex.Count() != 0)
-            {
-                string[] array = { };
-                Array.Resize(ref array, lastEditedCellValue.Count);
-                array[lastEditedCellValue.Count() - 1] = lastEditedCellValue.Peek();
-                Console.WriteLine("[{0}]", string.Join(", ", array));
-            }
-            //REDO
-            if (lastEditedCellValue.Count() != 0 && lastEditedRowIndex.Count() != 0 && lastEditedColumnIndex.Count() != 0)
-            {
-                int redoneColumnIndex = lastEditedColumnIndex.Peek();
-                int redoneRowIndex = lastEditedRowIndex.Peek();
-                dataGridView1.Rows[lastEditedRowIndex.Pop()].Cells[lastEditedColumnIndex.Pop()].Value = lastEditedCellValue.Pop();
-                /*dataGridView1_CellEndEdit(
-                        this.dataGridView1,
-                        new DataGridViewCellEventArgs(redoneColumnIndex, redoneRowIndex)
-                        );*/
-                preventError(
-                        this.dataGridView1,
-                        new DataGridViewCellEventArgs(redoneColumnIndex, redoneRowIndex)
-                        );
-                if (dataGridView1.Columns[redoneColumnIndex].Name == "Keluaran" && decimal.TryParse(dataGridView1.Rows[redoneRowIndex].Cells[redoneColumnIndex].Value.ToString(), out _))
-                {
-                    total[redoneRowIndex] = -1 * decimal.Parse(dataGridView1.Rows[redoneRowIndex].Cells[redoneColumnIndex].Value.ToString());
-                    if (decimal.TryParse(dataGridView1.Rows[redoneRowIndex].Cells["Masukan"].Value.ToString(), out _))
-                        total[redoneRowIndex] += decimal.Parse(dataGridView1.Rows[redoneRowIndex].Cells["Masukan"].Value.ToString());
-                }
-
-                else if (dataGridView1.Columns[redoneColumnIndex].Name == "Masukan" && decimal.TryParse(dataGridView1.Rows[redoneRowIndex].Cells[redoneColumnIndex].Value.ToString(), out _))
-                {
-                    total[redoneRowIndex] = decimal.Parse(dataGridView1.Rows[redoneRowIndex].Cells[redoneColumnIndex].Value.ToString());
-                    if (decimal.TryParse(dataGridView1.Rows[redoneRowIndex].Cells["Masukan"].Value.ToString(), out _))
-                        total[redoneRowIndex] -= decimal.Parse(dataGridView1.Rows[redoneRowIndex].Cells["Keluaran"].Value.ToString());
-                }
-                //Console.WriteLine("before recount total : " + total[redoneRowIndex]);
-                totalCellCount(
-                        this.dataGridView1,
-                        new DataGridViewCellEventArgs(redoneColumnIndex, redoneRowIndex)
-                        );
-                balanceCellCount(
-                        this.dataGridView1,
-                        new DataGridViewCellEventArgs(redoneColumnIndex, redoneRowIndex)
-                        );
-                //Console.WriteLine("redo total counting in column " + redoneColumnIndex + " and row " + redoneRowIndex + 
-                    //" with result " + total[redoneRowIndex]);
-            }
+            dataGridView1.CurrentCell.Value = (sender as DateTimePicker).Text.ToString();
+            (sender as DateTimePicker).Visible = false;
         }
-        Stack<int> sequencesOfEditedRowIndexes = new Stack<int>();
-        Stack<int> sequencesOfEditedColumnIndexes = new Stack<int>();
-        Stack<string> sequencesOfPreviousCellValue = new Stack<string>();
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dtp_OnTextChange(object sender, EventArgs e)
         {
-            /*
-            //if (e.RowIndex != null && e.ColumnIndex != null)
-            //{
-                sequencesOfEditedColumnIndexes.Push(e.ColumnIndex);
-                sequencesOfEditedRowIndexes.Push(e.RowIndex);
-                sequencesOfPreviousCellValue.Push(dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString());
-            //}
-            */
+            dataGridView1.CurrentCell.Value = (sender as DateTimePicker).Text.ToString();
         }
-        
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {/*
+        {
+            int dateColumnIndex = dataGridView1.Columns["Tanggal"].Index;
+            if (e.ColumnIndex == dateColumnIndex)
+            {
+                DateTimePicker dtp = new DateTimePicker();
+                dtp.Format = DateTimePickerFormat.Custom;
+                dtp.CustomFormat = "dd/MM/yy";
+                Rectangle rect = dataGridView1.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
+                dtp.Size = new Size(rect.Width, rect.Height);
+                dtp.Location = new Point(rect.X, rect.Y);
+                dtp.CloseUp += new EventHandler(dtp_CloseUp);
+                dtp.TextChanged += new EventHandler(dtp_OnTextChange);
+                dataGridView1.Controls.Add(dtp);
+                dtp.Visible = true;
+            }
+            /*
             foreach(DataGridViewRow dataGRow in dataGridView1.Rows)
             {
                 foreach (DataGridViewColumn dataGColumn in dataGridView1.Columns)
@@ -967,6 +882,7 @@ namespace CSV_Accounting
                         label7.Text = "Berkas CSV berhasil disimpan";
                         if (toggle)
                         {
+                            dataGridView1.Columns["Tanggal"].HeaderText = "Tanggal";
                             dataGridView1.Columns["Masukan"].HeaderText = "Debit";
                             dataGridView1.Columns["Keluaran"].HeaderText = "Kredit";
                             dataGridView1.Columns["Total"].HeaderText = "Total";
@@ -974,6 +890,7 @@ namespace CSV_Accounting
                         }
                         else
                         {
+                            dataGridView1.Columns["Tanggal"].HeaderText = "Tanggal";
                             dataGridView1.Columns["Masukan"].HeaderText = "Masukan";
                             dataGridView1.Columns["Keluaran"].HeaderText = "Keluaran";
                             dataGridView1.Columns["Total"].HeaderText = "Total";
@@ -1011,6 +928,7 @@ namespace CSV_Accounting
 
                         if (toggle)
                         {
+                            dataGridView1.Columns["Tanggal"].HeaderText = "Date";
                             dataGridView1.Columns["Masukan"].HeaderText = "Debit";
                             dataGridView1.Columns["Keluaran"].HeaderText = "Credit";
                             dataGridView1.Columns["Total"].HeaderText = "Total";
@@ -1018,6 +936,7 @@ namespace CSV_Accounting
                         }
                         else
                         {
+                            dataGridView1.Columns["Tanggal"].HeaderText = "Date";
                             dataGridView1.Columns["Masukan"].HeaderText = "Inflow";
                             dataGridView1.Columns["Keluaran"].HeaderText = "Outflow";
                             dataGridView1.Columns["Total"].HeaderText = "Total";
@@ -1055,6 +974,7 @@ namespace CSV_Accounting
 
                         if (toggle)
                         {
+                            dataGridView1.Columns["Tanggal"].HeaderText = "التاريخ";
                             dataGridView1.Columns["Masukan"].HeaderText = "الخصم";
                             dataGridView1.Columns["Keluaran"].HeaderText = "الائتمان";
                             dataGridView1.Columns["Total"].HeaderText = "المجموع";
@@ -1062,6 +982,7 @@ namespace CSV_Accounting
                         }
                         else
                         {
+                            dataGridView1.Columns["Tanggal"].HeaderText = "التاريخ";
                             dataGridView1.Columns["Masukan"].HeaderText = "الداخل";
                             dataGridView1.Columns["Keluaran"].HeaderText = "الخارج";
                             dataGridView1.Columns["Total"].HeaderText = "المجموع";
@@ -1082,6 +1003,20 @@ namespace CSV_Accounting
         private void dataGridView1_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             //isRowJustAdded = true;
+        }
+
+        private void dataGridView1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            if (dataGridView1.DataSource == null || dataGridView1.RowCount == 0)
+            {
+                foreach (Control control in dataGridView1.Controls)
+                {
+                    if (control is DateTimePicker)
+                    {
+                        control.Dispose();
+                    }
+                }
+            }
         }
         /*
 private void dateTimePicker_OnTextChange(object sender, EventArgs e)

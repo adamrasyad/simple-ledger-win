@@ -62,9 +62,10 @@ namespace CSV_Accounting
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(142, 63);
+            this.button1.Location = new System.Drawing.Point(189, 78);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(125, 23);
+            this.button1.Size = new System.Drawing.Size(167, 28);
             this.button1.TabIndex = 0;
             this.button1.Text = "Buka Tabel";
             this.button1.UseVisualStyleBackColor = true;
@@ -72,9 +73,10 @@ namespace CSV_Accounting
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(142, 102);
+            this.button2.Location = new System.Drawing.Point(189, 126);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(125, 23);
+            this.button2.Size = new System.Drawing.Size(167, 28);
             this.button2.TabIndex = 1;
             this.button2.Text = "Impor CSV...";
             this.button2.UseVisualStyleBackColor = true;
@@ -82,9 +84,10 @@ namespace CSV_Accounting
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(142, 143);
+            this.button3.Location = new System.Drawing.Point(189, 176);
+            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(125, 23);
+            this.button3.Size = new System.Drawing.Size(167, 28);
             this.button3.TabIndex = 2;
             this.button3.Text = "Tentang";
             this.button3.UseVisualStyleBackColor = true;
@@ -104,16 +107,18 @@ namespace CSV_Accounting
             this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Location = new System.Drawing.Point(15, 13);
+            this.panel1.Location = new System.Drawing.Point(20, 16);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(776, 306);
+            this.panel1.Size = new System.Drawing.Size(1035, 377);
             this.panel1.TabIndex = 3;
             // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(81, 0);
+            this.button11.Location = new System.Drawing.Point(108, 0);
+            this.button11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(47, 23);
+            this.button11.Size = new System.Drawing.Size(63, 28);
             this.button11.TabIndex = 10;
             this.button11.Text = "Redo";
             this.button11.UseVisualStyleBackColor = true;
@@ -121,9 +126,10 @@ namespace CSV_Accounting
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(28, 0);
+            this.button10.Location = new System.Drawing.Point(37, 0);
+            this.button10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(47, 23);
+            this.button10.Size = new System.Drawing.Size(63, 28);
             this.button10.TabIndex = 9;
             this.button10.Text = "Undo";
             this.button10.UseVisualStyleBackColor = true;
@@ -132,26 +138,29 @@ namespace CSV_Accounting
             // label7
             // 
             this.label7.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label7.Location = new System.Drawing.Point(643, 204);
+            this.label7.Location = new System.Drawing.Point(857, 251);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(100, 33);
+            this.label7.Size = new System.Drawing.Size(133, 41);
             this.label7.TabIndex = 8;
             this.label7.Text = "Berkas CSV berhasil disimpan";
             // 
             // label6
             // 
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(643, 171);
+            this.label6.Location = new System.Drawing.Point(857, 210);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(100, 33);
+            this.label6.Size = new System.Drawing.Size(133, 41);
             this.label6.TabIndex = 7;
             this.label6.Text = "Dibuka CSV ";
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(646, 50);
+            this.button9.Location = new System.Drawing.Point(861, 62);
+            this.button9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(109, 23);
+            this.button9.Size = new System.Drawing.Size(145, 28);
             this.button9.TabIndex = 6;
             this.button9.Text = "Simpan";
             this.button9.UseVisualStyleBackColor = true;
@@ -159,26 +168,29 @@ namespace CSV_Accounting
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(25, 287);
+            this.label4.Location = new System.Drawing.Point(33, 353);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(342, 19);
+            this.label4.Size = new System.Drawing.Size(456, 23);
             this.label4.TabIndex = 3;
             this.label4.Text = "Last Edited on :";
             // 
             // label1
             // 
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(643, 138);
+            this.label1.Location = new System.Drawing.Point(857, 170);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 33);
+            this.label1.Size = new System.Drawing.Size(133, 41);
             this.label1.TabIndex = 5;
             this.label1.Text = "Mohon masukan angka";
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(646, 108);
+            this.button7.Location = new System.Drawing.Point(861, 133);
+            this.button7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(109, 23);
+            this.button7.Size = new System.Drawing.Size(145, 28);
             this.button7.TabIndex = 4;
             this.button7.Text = "Kosongkan Tabel";
             this.button7.UseVisualStyleBackColor = true;
@@ -186,9 +198,10 @@ namespace CSV_Accounting
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(646, 79);
+            this.button6.Location = new System.Drawing.Point(861, 97);
+            this.button6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(109, 23);
+            this.button6.Size = new System.Drawing.Size(145, 28);
             this.button6.TabIndex = 3;
             this.button6.Text = "Simpan Sebagai ...";
             this.button6.UseVisualStyleBackColor = true;
@@ -196,9 +209,10 @@ namespace CSV_Accounting
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(646, 21);
+            this.button5.Location = new System.Drawing.Point(861, 26);
+            this.button5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(109, 23);
+            this.button5.Size = new System.Drawing.Size(145, 28);
             this.button5.TabIndex = 2;
             this.button5.Text = "Tambah Barisan";
             this.button5.UseVisualStyleBackColor = true;
@@ -206,9 +220,10 @@ namespace CSV_Accounting
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(680, 261);
+            this.button4.Location = new System.Drawing.Point(907, 321);
+            this.button4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.Size = new System.Drawing.Size(100, 28);
             this.button4.TabIndex = 1;
             this.button4.Text = "Kembali";
             this.button4.UseVisualStyleBackColor = true;
@@ -218,14 +233,17 @@ namespace CSV_Accounting
             // 
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(28, 23);
+            this.dataGridView1.Location = new System.Drawing.Point(37, 28);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(570, 263);
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.Size = new System.Drawing.Size(760, 324);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
+            this.dataGridView1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridView1_DataBindingComplete);
             this.dataGridView1.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView1_RowsAdded);
             // 
             // panel2
@@ -234,26 +252,29 @@ namespace CSV_Accounting
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.button8);
             this.panel2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.panel2.Location = new System.Drawing.Point(15, 13);
+            this.panel2.Location = new System.Drawing.Point(20, 16);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(776, 306);
+            this.panel2.Size = new System.Drawing.Size(1035, 377);
             this.panel2.TabIndex = 6;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(335, 16);
+            this.label3.Location = new System.Drawing.Point(447, 20);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(68, 18);
+            this.label3.Size = new System.Drawing.Size(87, 24);
             this.label3.TabIndex = 2;
             this.label3.Text = "Tentang";
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(25, 40);
+            this.label2.Location = new System.Drawing.Point(33, 49);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(730, 123);
+            this.label2.Size = new System.Drawing.Size(973, 151);
             this.label2.TabIndex = 1;
             this.label2.Text = "     Perangkat lunak ini dikembangkan oleh Mochamad Adamrasyad Iqbal (C) 1444 H. " +
     "Perangkat lunak ini berguna untuk membuat tabel akuntan setiap saat dibutuhkan d" +
@@ -262,9 +283,10 @@ namespace CSV_Accounting
             // button8
             // 
             this.button8.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.button8.Location = new System.Drawing.Point(336, 236);
+            this.button8.Location = new System.Drawing.Point(448, 290);
+            this.button8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(75, 23);
+            this.button8.Size = new System.Drawing.Size(100, 28);
             this.button8.TabIndex = 0;
             this.button8.Text = "Kembali";
             this.button8.UseVisualStyleBackColor = false;
@@ -274,9 +296,10 @@ namespace CSV_Accounting
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(332, 29);
+            this.label5.Location = new System.Drawing.Point(443, 36);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(362, 18);
+            this.label5.Size = new System.Drawing.Size(449, 24);
             this.label5.TabIndex = 3;
             this.label5.Text = "Selamat Datang di Pembuat Arsip CSV Akuntan";
             // 
@@ -284,9 +307,10 @@ namespace CSV_Accounting
             // 
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = global::CSV_Accounting.Properties.Resources.CSV_App_Moon_Icon;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 320);
+            this.pictureBox1.Location = new System.Drawing.Point(16, 394);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox1.Size = new System.Drawing.Size(33, 31);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
@@ -299,9 +323,10 @@ namespace CSV_Accounting
             // 
             this.checkBox1.Appearance = System.Windows.Forms.Appearance.Button;
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(43, 322);
+            this.checkBox1.Location = new System.Drawing.Point(57, 396);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(124, 23);
+            this.checkBox1.Size = new System.Drawing.Size(150, 26);
             this.checkBox1.TabIndex = 8;
             this.checkBox1.Text = "Pakai Istilah Akuntansi";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -314,17 +339,18 @@ namespace CSV_Accounting
             "Bahasa Indonesia",
             "English",
             "العربية"});
-            this.comboBox1.Location = new System.Drawing.Point(173, 322);
+            this.comboBox1.Location = new System.Drawing.Point(231, 396);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.Size = new System.Drawing.Size(160, 24);
             this.comboBox1.TabIndex = 9;
             this.comboBox1.DropDownClosed += new System.EventHandler(this.comboBox1_DropDownClosed);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 348);
+            this.ClientSize = new System.Drawing.Size(1067, 428);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.pictureBox1);
@@ -335,6 +361,7 @@ namespace CSV_Accounting
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label5);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
