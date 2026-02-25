@@ -117,14 +117,175 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="App_Title" xml:space="preserve">
+    <value>CSV Accounting File Maker</value>
+  </data>
+  <data name="Btn_OpenTable" xml:space="preserve">
+    <value>Open Table</value>
+  </data>
+  <data name="Btn_ImportCsv" xml:space="preserve">
+    <value>Open a CSV file</value>
+  </data>
+  <data name="Btn_About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Btn_Back" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="Btn_AddRow" xml:space="preserve">
+    <value>Add Row</value>
+  </data>
+  <data name="Btn_SaveAs" xml:space="preserve">
+    <value>Save As ...</value>
+  </data>
+  <data name="Btn_Clear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="Btn_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Btn_Undo" xml:space="preserve">
+    <value>Undo</value>
+  </data>
+  <data name="Btn_Redo" xml:space="preserve">
+    <value>Redo</value>
+  </data>
+  <data name="Checkbox_AccountingTerms" xml:space="preserve">
+    <value>Use Accounting Terms</value>
+  </data>
+  <data name="Col_Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="Col_Debit" xml:space="preserve">
+    <value>Debit</value>
+  </data>
+  <data name="Col_Credit" xml:space="preserve">
+    <value>Credit</value>
+  </data>
+  <data name="Col_Inflow" xml:space="preserve">
+    <value>Inflow</value>
+  </data>
+  <data name="Col_Outflow" xml:space="preserve">
+    <value>Outflow</value>
+  </data>
+  <data name="Col_Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="Col_Balance" xml:space="preserve">
+    <value>Balance</value>
+  </data>
+  <data name="Msg_InsertNumber" xml:space="preserve">
+    <value>Please insert number
+(Example: 150.50 or 100+50*2)</value>
+  </data>
+  <data name="Lbl_AboutTitle" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Lbl_LastEdited" xml:space="preserve">
+    <value>Last Edited on: </value>
+  </data>
+  <data name="Lbl_Welcome" xml:space="preserve">
+    <value>Welcome to CSV Accounting File Maker</value>
+  </data>
+  <data name="Lbl_OpenedCSV" xml:space="preserve">
+    <value>Opened CSV </value>
+  </data>
+  <data name="Lbl_SaveSuccess" xml:space="preserve">
+    <value>CSV File is successfully saved</value>
+  </data>
+  <data name="Msg_SaveBeforeClosing" xml:space="preserve">
+    <value>Save before closing?</value>
+  </data>
+  <data name="Msg_SaveTitle" xml:space="preserve">
+    <value>Save as CSV</value>
+  </data>
+  <data name="StringMonthlyBalance" xml:space="preserve">
+    <value>MONTHLY TOTAL</value>
+  </data>
+  <data name="StringGrandBalance" xml:space="preserve">
+    <value>OVERALL TOTAL</value>
+  </data>
+  <data name="LanguageName" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="Col_Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
   <data name="Col_Reference" xml:space="preserve">
     <value>Reference</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="CSV_App_Moon_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CSV_App_Moon_Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Col_Tags" xml:space="preserve">
+    <value>Labels</value>
   </data>
-  <data name="CSV_App_Sun_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CSV_App_Sun_Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="StringLoaded" xml:space="preserve">
+    <value>Loaded :</value>
+  </data>
+  <data name="Err_Load" xml:space="preserve">
+    <value>Error loading CSV:</value>
+  </data>
+  <data name="Lbl_AboutDesc" xml:space="preserve">
+    <value>This software is developed by Mochamad Adamrasyad Iqbal (C) 1444 H. The software is useful to make an accounting table whenever needed and open compatible CSV files.</value>
+  </data>
+  <data name="Log_DefaultDesc" xml:space="preserve">
+    <value>New Entry</value>
+  </data>
+  <data name="Lbl_SavedTo" xml:space="preserve">
+    <value>Saved to: </value>
+  </data>
+  <data name="Err_Save" xml:space="preserve">
+    <value>Error saving: </value>
+  </data>
+  <data name="Err_InvalidInput" xml:space="preserve">
+    <value>Invalid Input</value>
+  </data>
+  <data name="SearchPlaceholder" xml:space="preserve">
+    <value>Search by description, reference, or tags...</value>
+  </data>
+  <data name="DateTooltip" xml:space="preserve">
+    <value>Click to open calendar</value>
+  </data>
+  <data name="TagsTooltip" xml:space="preserve">
+    <value>Ctrl + Click to filter by this tag</value>
+  </data>
+  <data name="Lbl_Analytics" xml:space="preserve">
+    <value>Analytics</value>
+  </data>
+  <data name="Msg_SaveBeforeOpen" xml:space="preserve">
+    <value>Current edited ledger will be overwritten and cannot be undone after open! Save before open? </value>
+  </data>
+  <data name="Msg_OverwriteCurrent" xml:space="preserve">
+    <value>Save before overwrite current ledger?</value>
+  </data>
+  <data name="Msg_InvalidMathExpression" xml:space="preserve">
+    <value>Invalid math expression.
+(Example: Square(20) or Power(20,2) instead of 20^2)</value>
+  </data>
+  <data name="Msg_ConfirmDelete" xml:space="preserve">
+    <value>Confirm row deletion?</value>
+  </data>
+  <data name="Title_Delete" xml:space="preserve">
+    <value>Delete Row</value>
+  </data>
+  <data name="Err_InvalidDate" xml:space="preserve">
+    <value>Invalid date format. Please input dd/MM/yyyy.
+(Example: 01/01/1997)</value>
+  </data>
+  <data name="Lbl_Desc" xml:space="preserve">
+    <value>Your {0} expenses increased {1} over the last 3 months.</value>
+  </data>
+  <data name="ListSeparator" xml:space="preserve">
+    <value>,</value>
+  </data>
+  <data name="AndSeparator" xml:space="preserve">
+    <value> and </value>
+  </data>
+  <data name="MaxSpendTags" xml:space="preserve">
+    <value> You spent the most in {0} mostly on {1}.</value>
+  </data>
+  <data name="NoDataFound" xml:space="preserve">
+    <value>No spending data found.</value>
+  </data>
+  <data name="Lbl_FilterByTag" xml:space="preserve">
+    <value>Filter by tag:</value>
   </data>
 </root>

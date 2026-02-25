@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="App_Title" xml:space="preserve">
+    <value>صانع ملف المحاسبة سي إس في (CSV)</value>
+  </data>
+  <data name="Btn_OpenTable" xml:space="preserve">
+    <value>افتح الجدول</value>
+  </data>
+  <data name="Btn_ImportCsv" xml:space="preserve">
+    <value>فتح ملف سي إس في</value>
+  </data>
+  <data name="Btn_About" xml:space="preserve">
+    <value>عن البرنامج</value>
+  </data>
+  <data name="Btn_Back" xml:space="preserve">
+    <value>رجع</value>
+  </data>
+  <data name="Btn_AddRow" xml:space="preserve">
+    <value>أضف الصف</value>
+  </data>
+  <data name="Btn_SaveAs" xml:space="preserve">
+    <value>حفظ باسم ...</value>
+  </data>
+  <data name="Btn_Clear" xml:space="preserve">
+    <value>فرغ</value>
+  </data>
+  <data name="Btn_Save" xml:space="preserve">
+    <value>حفظ</value>
+  </data>
+  <data name="Btn_Undo" xml:space="preserve">
+    <value>أرجع</value>
+  </data>
+  <data name="Btn_Redo" xml:space="preserve">
+    <value>أعد</value>
+  </data>
+  <data name="Checkbox_AccountingTerms" xml:space="preserve">
+    <value>استعمل مصطلح المحاسبة</value>
+  </data>
+  <data name="Col_Date" xml:space="preserve">
+    <value>التاريخ</value>
+  </data>
+  <data name="Col_Debit" xml:space="preserve">
+    <value>الخصم</value>
+  </data>
+  <data name="Col_Credit" xml:space="preserve">
+    <value>الائتمان</value>
+  </data>
+  <data name="Col_Inflow" xml:space="preserve">
+    <value>الداخل</value>
+  </data>
+  <data name="Col_Outflow" xml:space="preserve">
+    <value>الخارج</value>
+  </data>
+  <data name="Col_Total" xml:space="preserve">
+    <value>المجموع</value>
+  </data>
+  <data name="Col_Balance" xml:space="preserve">
+    <value>الرصيد</value>
+  </data>
+  <data name="Msg_InsertNumber" xml:space="preserve">
+    <value>رجاء إدخال الرقم فقط
+(مثال: 150.50 أو 100+50*2)</value>
+  </data>
+  <data name="Lbl_AboutTitle" xml:space="preserve">
+    <value>عن البرنامج</value>
+  </data>
+  <data name="Lbl_LastEdited" xml:space="preserve">
+    <value>آخر التغيير في: </value>
+  </data>
+  <data name="Lbl_Welcome" xml:space="preserve">
+    <value>أهلا بكم في البرنامج صانع ملف سي إس في للمحاسبة</value>
+  </data>
+  <data name="Lbl_OpenedCSV" xml:space="preserve">
+    <value>افتح سي إس في </value>
+  </data>
+  <data name="Lbl_SaveSuccess" xml:space="preserve">
+    <value>تم حفظ الملف سي إس في</value>
+  </data>
+  <data name="Msg_SaveBeforeClosing" xml:space="preserve">
+    <value>حفظ قبل الإغلاق؟</value>
+  </data>
+  <data name="Msg_SaveTitle" xml:space="preserve">
+    <value>حفظ ملف سي إس في</value>
+  </data>
+  <data name="StringMonthlyBalance" xml:space="preserve">
+    <value>الجملة الشهرية</value>
+  </data>
+  <data name="StringGrandBalance" xml:space="preserve">
+    <value>الجملة الكلية</value>
+  </data>
+  <data name="LanguageName" xml:space="preserve">
+    <value>العربية</value>
+  </data>
+  <data name="Col_Description" xml:space="preserve">
+    <value>البيان</value>
+  </data>
+  <data name="Col_Reference" xml:space="preserve">
+    <value>المرجع</value>
+  </data>
+  <data name="Col_Tags" xml:space="preserve">
+    <value> الوسوم</value>
+  </data>
+  <data name="StringLoaded" xml:space="preserve">
+    <value>تم تحميل :</value>
+  </data>
+  <data name="Err_Load" xml:space="preserve">
+    <value>خطأ في تحميل الملف:</value>
+  </data>
+  <data name="Lbl_AboutDesc" xml:space="preserve">
+    <value>هذا البرنامج طوره محمد أدم رشاد إقبال (C) 1444 هجرية. والبرنامج يخدم عمل الجدول للمحاسبة كلما احتيج ويفتح ملف سي إس في الصالح له.</value>
+  </data>
+  <data name="Log_DefaultDesc" xml:space="preserve">
+    <value>قيد حيد</value>
+  </data>
+  <data name="Lbl_SavedTo" xml:space="preserve">
+    <value>تم الحفظ في: </value>
+  </data>
+  <data name="Err_Save" xml:space="preserve">
+    <value>خطأ في الحفظ: </value>
+  </data>
+  <data name="Err_InvalidInput" xml:space="preserve">
+    <value>إدخال غير صالح</value>
+  </data>
+  <data name="SearchPlaceholder" xml:space="preserve">
+    <value>ابحث بقيد أو مرجع أو وسم...</value>
+  </data>
+  <data name="DateTooltip" xml:space="preserve">
+    <value>انقر لفتح التقويم</value>
+  </data>
+  <data name="TagsTooltip" xml:space="preserve">
+    <value>Ctrl + انقر للتصفية بهذا الوسم</value>
+  </data>
+  <data name="Lbl_Analytics" xml:space="preserve">
+    <value> التحليلات</value>
+  </data>
+  <data name="Msg_SaveBeforeOpen" xml:space="preserve">
+    <value>سيتم استبدال دفتر الأستاذ الحالي ولا يمكن التراجع عن ذلك بعد الفتح! هل تريد الحفظ قبل الفتح؟</value>
+  </data>
+  <data name="Msg_OverwriteCurrent" xml:space="preserve">
+    <value>حفظ قبل استبدال دفتر الأستاذ الحالي؟</value>
+  </data>
+  <data name="Msg_InvalidMathExpression" xml:space="preserve">
+    <value>صيغة رياضية غير صحيحة.
+(مثال: Square(20) أو Power(20,2) بدلاً من 20^2)</value>
+  </data>
+  <data name="Msg_ConfirmDelete" xml:space="preserve">
+    <value>هل تريد تأكيد حذف الصف؟</value>
+  </data>
+  <data name="Title_Delete" xml:space="preserve">
+    <value>حذف الصف</value>
+  </data>
+  <data name="Err_InvalidDate" xml:space="preserve">
+    <value>تنسيق التاريخ غير صالح. يرجى إدخال التاريخ بصيغة dd/MM/yyyy.
+(مثال: 01/01/1997)</value>
+  </data>
+  <data name="Lbl_Desc" xml:space="preserve">
+    <value> .زادت مصاريف {0} بنسبة {1} خلال الأشهر الثلاثة الماضية</value>
+  </data>
+  <data name="ListSeparator" xml:space="preserve">
+    <value>،</value>
+  </data>
+  <data name="AndSeparator" xml:space="preserve">
+    <value>و </value>
+  </data>
+  <data name="MaxSpendTags" xml:space="preserve">
+    <value>أنفقت الجزء الأكبر في {0} خاصة على {1}.</value>
+  </data>
+  <data name="NoDataFound" xml:space="preserve">
+    <value>.لا يوجد بيانات مصاريف</value>
+  </data>
+  <data name="Lbl_FilterByTag" xml:space="preserve">
+    <value>:تصفية حسب الوسم</value>
+  </data>
+</root>
