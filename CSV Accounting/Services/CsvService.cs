@@ -21,7 +21,7 @@ namespace CSV_Accounting.Services
                 while (!reader.EndOfStream)
                 {
                     string line = reader.ReadLine();
-                    string[] values = line.Split(',');
+                    string[] values = line.Split(new[] { ',' }, 6);
 
                     DateTime date = DateTime.ParseExact(
                         values[0],
@@ -41,7 +41,7 @@ namespace CSV_Accounting.Services
                     //List<string> tags = values[5].Split('|').ToList();
                     
                     // Ensure minimum column count
-                    Array.Resize(ref values, 6);
+                    //Array.Resize(ref values, 6); << moved to line 24
 
                     string description = values[3].Replace("|", ", ") ?? "";
                     string reference = values[4].Replace("|", ", ") ?? "";
@@ -87,7 +87,7 @@ namespace CSV_Accounting.Services
 
                     string description = SanitizeText(log.Description);
                     string reference = SanitizeText(log.Reference);
-                    string tags = string.Join("|", log.Tags);
+                    string tags = string.Join("|", log.Tags.Select(SanitizeText));
 
                     writer.WriteLine(
                         $"{log.Date:yyyy-MM-dd}," +
@@ -106,7 +106,24 @@ namespace CSV_Accounting.Services
             if (string.IsNullOrWhiteSpace(text))
                 return "";
 
-            return text.Replace(",", "|");
+            string sanitized = text;
+
+            // Prevent CSV structure break
+            sanitized = sanitized.Replace(",", "|");
+
+            // Prevent row break
+            sanitized = sanitized.Replace("\r", " ").Replace("\n", " ");
+
+            // Prevent CSV Injection (Excel formula execution)
+            if (sanitized.StartsWith("=") ||
+                sanitized.StartsWith("+") ||
+                sanitized.StartsWith("-") ||
+                sanitized.StartsWith("@"))
+            {
+                sanitized = "'" + sanitized;
+            }
+
+            return sanitized;
         }
     }
 
